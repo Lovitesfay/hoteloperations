@@ -53,7 +53,32 @@ public class Room {
         }
         return false;
     }
+    public boolean checkIn() {
+        if (!this.isOccupied() && !this.isDirty()) {
+            System.out.println("Ready for check in");
+            return true;
+        }
+        System.out.println("Not ready for check in");
+        return false;
+
+    }
+    public boolean checkOut() {
+        System.out.println("Ready for check out");
+        return cleanroom();
+
+    }
+    public boolean cleanroom() {
+
+        if (!this.isOccupied() && this.isDirty()) {
+            System.out.println("Ready for cleaning");
+             return true;
+        }
+        System.out.println("Not ready for cleaning");
+        return false;
+
+    }
 }
+
 
 
 

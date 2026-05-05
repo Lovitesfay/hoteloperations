@@ -51,11 +51,14 @@ public class Reservation {
     }
 
     public double getReservationTotal() {
-        double total = this.getPrice() * this.numOfStay; * this.getPrice();
+        double total = this.getPrice() * this.getNumOfStay();
 
         if (this.isWeekend) {
             total = total + (total *.1);
         }
         return total;
+
+
+
     }
 }

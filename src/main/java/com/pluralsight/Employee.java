@@ -6,6 +6,8 @@ public class Employee {
     private String department;
     private double payRate;
     private double hoursWorked;
+    private double punchIn;
+    private double punchOut;
 
     public Employee(int employeeId, String name, String department, double payRate, double hoursWorked) {
         this.employeeId = employeeId;
@@ -56,19 +58,54 @@ public class Employee {
     }
 
     public double getTotalPay() {
+        double regularPay = this.payRate * this.getRegularHours();
+        double overTimePay = this.payRate * this.getOvertimeHours();
+
         return payRate * hoursWorked;
     }
 
     public double getRegularHours() {
-        if (hoursWorked > 0 && hoursWorked < 40) {
+        if (this.hoursWorked <= 40) {
+            return this.hoursWorked;
         }
-        return hoursWorked;
+        return 40;
     }
 
     public double getOvertimeHours() {
-        if (hoursWorked > 40) {
-            return hoursWorked;
+        if (this.hoursWorked > 40) {
+            return hoursWorked - 40;
         }
-        return hoursWorked;
+        return 0;
+    }
+
+    public double punchIn(int time) {
+        if (this.punchIn == 0) {
+            punchIn = time;
+        }
+        return punchIn;
+
+    }
+    public double punchOut(int time) {
+        if (this.punchIn != 0 && this.punchOut == 0) {
+            this.punchOut = time;
+
+            // calculate hours for this shift
+            double hours = this.punchOut - this.punchIn;
+            this.hoursWorked += hours;
+
+            // reset for next shift
+            this.punchIn = 0;
+            this.punchOut = 0;
+        }
+        return punchOut;
     }
 }
+
+
+
+
+
+
+
+
+

@@ -64,7 +64,11 @@ public class Room {
     }
     public boolean checkOut() {
         System.out.println("Ready for check out");
-        return cleanroom();
+        this.cleanroom();
+        this.isDirty = false;
+
+        return true;
+
 
     }
     public boolean cleanroom() {

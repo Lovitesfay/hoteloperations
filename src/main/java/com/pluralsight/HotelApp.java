@@ -49,7 +49,14 @@ public class HotelApp {
 
 
         System.out.println("Hours worked: " + time.getHoursWorked()); // 7
+
+    Hotel hotel = new Hotel("Hilton",50, 100);
+    Hotel hotel1 = new Hotel("Hilton", 50, 100, 20, 20);
+
+        System.out.println("Available basic rooms: " + hotel1.getAvailableRooms());
+        System.out.println("Available suites: " + hotel1.getAvailableSuites());
     }
+
     }
 
 

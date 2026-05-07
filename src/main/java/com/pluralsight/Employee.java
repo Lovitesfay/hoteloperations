@@ -1,5 +1,8 @@
 package com.pluralsight;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 public class Employee {
     private int employeeId;
     private String name;
@@ -99,6 +102,28 @@ public class Employee {
         }
         return punchOut;
     }
+    public void punchTimeCard(int start, int endTime) {
+        this.punchIn(start);
+        this.punchOut(endTime);
+    }
+    public void punchIn(){
+        LocalTime currentTime = LocalTime.now();
+        int CurrentHour = currentTime.getHour();
+        int CurrentMinute = currentTime.getMinute();
+        this.punchIn(CurrentHour);
+        this.punchOut(currentTime.getHour());
+
+
+    }
+    public void punchOut(){
+        LocalTime currentTime = LocalTime.now();
+        int CurrentHour = currentTime.getHour();
+        int CurrentMinute = currentTime.getMinute();
+        this.punchIn(CurrentHour);
+        this.punchOut(CurrentMinute);
+
+    }
+
 }
 
 

@@ -3,13 +3,13 @@ package com.pluralsight;
 public class Room {
    private int numOfBeds;
    private double price;
-   private boolean IsOccupied;
+   private boolean isOccupied;
    private boolean isDirty;
 
     public Room(int numOfBeds, double price, boolean isOccupied, boolean isDirty) {
         this.numOfBeds = numOfBeds;
         this.price = price;
-        IsOccupied = isOccupied;
+        this.isOccupied = isOccupied;
         this.isDirty = isDirty;
 
     }
@@ -31,11 +31,11 @@ public class Room {
     }
 
     public boolean isOccupied() {
-        return IsOccupied;
+        return isOccupied;
     }
 
     public void setOccupied(boolean occupied) {
-        IsOccupied = occupied;
+        isOccupied = occupied;
     }
 
     public boolean isDirty() {
@@ -47,38 +47,24 @@ public class Room {
     }
 
     public boolean isAvailable() {
-         if (!this.isOccupied() && !this.isDirty()) {
-            return true;
+        return !this.isOccupied && !this.isDirty;
 
-        }
-        return false;
+
     }
-    public boolean checkIn() {
+    public void checkIn() {
         if (!this.isOccupied() && !this.isDirty()) {
-            System.out.println("Ready for check in");
-            return true;
+            isOccupied = true;
+            isDirty  = true;
         }
-        System.out.println("Not ready for check in");
-        return false;
+    }
+    public void checkOut() {
+        isOccupied = false;
+       isDirty = true;
 
     }
-    public boolean checkOut() {
-        System.out.println("Ready for check out");
-        this.cleanroom();
+    public void cleanroom() {
+
         this.isDirty = false;
-
-        return true;
-
-
-    }
-    public boolean cleanroom() {
-
-        if (!this.isOccupied() && this.isDirty()) {
-            System.out.println("Ready for cleaning");
-             return true;
-        }
-        System.out.println("Not ready for cleaning");
-        return false;
 
     }
 }

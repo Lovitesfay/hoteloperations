@@ -3,61 +3,60 @@ package com.pluralsight;
 public class HotelApp {
     public static void main(String[] args) {
 
-        Room room1 = new Room(2, 65.50, true, false);
-        Room room2 = new Room(1, 80.3, false, true);
-        Room room3 = new Room(2, 65.5, true, true);
-        Room room4 = new Room(1, 80, false, false);
+        // HOTEL
+        Hotel hotel = new Hotel("Hilton", 20, 50);
 
-        System.out.println("[room1]");
-        System.out.println("Beds: " + " " + room1.getNumOfBeds());
-        System.out.println("Price: " + " " + room1.getPrice());
-        System.out.println("Occupancy: " + " " + room1.isOccupied());
-        System.out.println("Dirty: " + " " + room1.isDirty());
-        System.out.println("Availability:" + " " + room1.isAvailable());
-        System.out.println(room1.checkIn());
-        System.out.println(room1.checkOut());
-        System.out.println(room1.cleanroom());
-        System.out.println("[room2]");
-        System.out.println("Beds: " + " " + room2.getNumOfBeds());
-        System.out.println("Price: " + " " + room2.getPrice());
-        System.out.println("Occupancy: " + room2.isOccupied());
-        System.out.println("Dirty: " + " " + room2.isDirty());
-        System.out.println("Availability:" + " " + room2.isAvailable());
-        System.out.println();
-        System.out.println("[room3]");
-        System.out.println("Beds: " + room3.getNumOfBeds());
-        System.out.println("Price: " + room3.getPrice());
-        System.out.println("Occupancy: " + room3.isOccupied());
-        System.out.println("Dirty: " + room3.isDirty());
-        System.out.println("Availability:" + " " + room3.isAvailable());
-        System.out.println("Beds: " + " " + room4.getNumOfBeds());
-        System.out.println("Price: " + " " + room4.getPrice());
-        System.out.println("Occupancy: " + " " + room4.isOccupied());
-        System.out.println("Dirty: " + " " + room4.isDirty());
-        System.out.println("Availability:" + " " + room4.isAvailable());
-        System.out.println("---------------------------------------------");
+        System.out.println("Hotel: " + hotel.getName());
+        System.out.println("Available Suites: " + hotel.getAvailableSuites());
+        System.out.println("Available Rooms: " + hotel.getAvailableRooms());
 
+        System.out.println("--------------------------------");
 
-        Employee time = new Employee(332, "lovi", "Developer",30,0);
+        // ROOM
+        Room room = new Room(2, 150.00, false, false);
 
-        System.out.println("Work time ");
-        System.out.println("ID: " + time.getEmployeeId());
-        time.punchOut(14);
+        System.out.println("Room Available: " + room.isAvailable());
 
-        time.punchIn(15);
-        time.punchOut(18);
+        room.checkIn();
 
+        System.out.println("Guest checked in");
+        System.out.println("Room Occupied: " + room.isOccupied());
 
-        System.out.println("Hours worked: " + time.getHoursWorked()); // 7
+        System.out.println("--------------------------------");
 
-    Hotel hotel = new Hotel("Hilton",50, 100);
-    Hotel hotel1 = new Hotel("Hilton", 50, 100, 20, 20);
+        // RESERVATION
+        Reservation reservation = new Reservation("king", 3, true);
 
-        System.out.println("Available basic rooms: " + hotel1.getAvailableRooms());
-        System.out.println("Available suites: " + hotel1.getAvailableSuites());
+        System.out.println("Room Type: " + reservation.getRoomType());
+        System.out.println("Price Per Night: " + reservation.getPrice());
+        System.out.println("Reservation Total: " + reservation.getReservationTotal());
+
+        System.out.println("--------------------------------");
+
+        // EMPLOYEE
+        Employee employee = new Employee(101, "Lovi", "Front Desk", 25, 0);
+
+        employee.punchIn(9);
+        employee.punchOut(17);
+
+        System.out.println("Employee: " + employee.getName());
+        System.out.println("Hours Worked: " + employee.getHoursWorked());
+
+        System.out.println("--------------------------------");
+
+        // CHECKOUT
+        room.checkOut();
+
+        System.out.println("Guest checked out");
+        System.out.println("Room Dirty: " + room.isDirty());
+
+        room.cleanroom();
+
+        System.out.println("Room cleaned");
+        System.out.println("Room Dirty: " + room.isDirty());
+        System.out.println("Room Available: " + room.isAvailable());
     }
-
-    }
+}
 
 
 
